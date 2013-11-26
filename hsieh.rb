@@ -21,7 +21,7 @@ description: |
   2) You must place the following URL in a footnote to help others find the data: http://faculty.fuqua.duke.edu/~dah7/DataLibrary/TF-FAC.xls
   3) You assume all risk for the use of the data.
 
-  The script that produces this dataset can be found at https://github.com/tammer/scrapers
+  The script that produces this dataset can be found at https://github.com/tammer/scrapers/blob/master/hsieh.rb
 --
 META
 
