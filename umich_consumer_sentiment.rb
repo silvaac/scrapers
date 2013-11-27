@@ -10,9 +10,10 @@ def process_table( table_number, start_year )
   lines = response.body.split("\n")
   lines = response.body.gsub(/[,\s]+$/,'').split("\n")
   title = lines.shift.gsub(/.+:/,'').gsub(/The\s+/,'')
+  puts "source_code: UMICH"
   puts "code: SOC#{table_number}"
   puts "name: University of Michigan Consumer Survey,#{title}"
-  puts "description: Reproduced with Permission.  Publisher's terms of use at www.sca.isr.umich.edu/agreement.php\nData points more recent than 6 months come from the Wall Street Journal."
+  puts "description: |\n  Reproduced with Permission.  Publisher's terms of use at www.sca.isr.umich.edu/agreement.php\n  Data points for the most recent 6 months are unofficial; they are sourced from articles in the Wall Street Journal.\n  The script that produces this dataset can be found at https://github.com/tammer/scrapers/blob/master/umich_consumer_sentiment.rb.rb"
   puts "display_url: www.sca.isr.umich.edu/data-archive/mine.php"
   puts "--"
   headers = lines.shift.gsub("Month,Year","Date")
@@ -26,5 +27,6 @@ def process_table( table_number, start_year )
 
 end
 
-
-process_table(47,2007)
+1.upto(47) do |i|
+	process_table(i,1977)
+end
