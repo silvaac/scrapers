@@ -13,7 +13,7 @@ def process_table( table_number, start_year )
   puts "source_code: UMICH"
   puts "code: SOC#{table_number}"
   puts "name: University of Michigan Consumer Survey,#{title}"
-  puts "description: |\n  Reproduced with Permission.  Publisher's terms of use at www.sca.isr.umich.edu/agreement.php\n  Data points for the most recent 6 months are unofficial; they are sourced from articles in the Wall Street Journal.\n  The script that produces this dataset can be found at https://github.com/tammer/scrapers/blob/master/umich_consumer_sentiment.rb.rb"
+  puts "description: |\n  Reproduced with Permission.  Publisher's terms of use at www.sca.isr.umich.edu/agreement.php\n  Data points for the most recent 6 months are unofficial; they are sourced from articles in the Wall Street Journal.\n  The script that produces this dataset can be found at https://github.com/tammer/scrapers/blob/master/umich_consumer_sentiment.rb"
   puts "display_url: www.sca.isr.umich.edu/data-archive/mine.php"
   puts "--"
   headers = lines.shift.gsub("Month,Year","Date")
