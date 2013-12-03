@@ -8,7 +8,7 @@ require 'date'
 metadata = <<META
 code: TFRF
 name: Hsieh Trend-Following Hedge Fund Risk Factors
-reference_url: www.thestar.com
+display_url: http://faculty.fuqua.duke.edu/~dah7/HFRFData.htm
 description: |
   These trend-following factors are constructed based on the article by William Fung & David A. Hsieh, "The Risk in Hedge Fund Strategies: Theory and Evidence from Trend Followers," Review of Financial Studies, 14 (2001), 313-341.
   PTFSBD: Return of PTFS Bond lookback straddle
@@ -24,8 +24,6 @@ description: |
   The script that produces this dataset can be found at https://github.com/tammer/scrapers/blob/master/hsieh.rb
 --
 META
-
-# reference_url: https://faculty.fuqua.duke.edu/~dah7/HFRFData.htm
 
 temp = open("https://faculty.fuqua.duke.edu/~dah7/DataLibrary/TF-Fac.xls")
 sheet = Spreadsheet.open(temp).worksheet(0)
