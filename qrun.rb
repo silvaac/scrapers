@@ -1,5 +1,10 @@
 #!/usr/bin/env ruby
 
+@QUANDL_CMD = `which quandl`.strip
+
+# puts "#{@QUANDL_CMD} upload"
+# exit
+
 require 'open3'
 require 'optparse'
 
@@ -32,7 +37,7 @@ puts "Scraper sent nothing to stderr. so now piping stdout to quandl upload"
 
 puts stdout1
 
-stdout2, stderr2, status = Open3.capture3("quandl upload", :stdin_data => stdout1)
+stdout2, stderr2, status = Open3.capture3("#{@QUANDL_CMD} upload", :stdin_data => stdout1)
 
 puts stdout2 + stderr2
 
