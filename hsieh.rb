@@ -8,7 +8,7 @@ require 'date'
 metadata = <<META
 code: TFRF
 name: Hsieh Trend-Following Hedge Fund Risk Factors
-display_url: http://faculty.fuqua.duke.edu/~dah7/HFRFData.htm
+reference_url: http://faculty.fuqua.duke.edu/~dah7/HFRFData.htm
 description: |
   These trend-following factors are constructed based on the article by William Fung & David A. Hsieh, "The Risk in Hedge Fund Strategies: Theory and Evidence from Trend Followers," Review of Financial Studies, 14 (2001), 313-341.
   PTFSBD: Return of PTFS Bond lookback straddle
