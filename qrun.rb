@@ -1,12 +1,12 @@
 #!/usr/bin/env ruby
+require 'open3'
+require 'optparse'
 
 @QUANDL_CMD = `which quandl`.strip
 
-# puts "#{@QUANDL_CMD} upload"
-# exit
-
-require 'open3'
-require 'optparse'
+if @QUANDL_CMD == ''
+  @QUANDL_CMD = '/usr/local/bin/quandl'
+end
 
 def sendMail (body)
   Open3.capture3("mail -s #{ARGV[0]} tammer@tammer.com", :stdin_data => body)
@@ -27,29 +27,47 @@ end.parse!
 # Run the scraper:
 stdout1,stderr1,status = Open3.capture3("ruby #{ARGV[0]}")
 
-unless stderr1 == ''
-  puts stderr1
-  sendMail(stderr1)
-  exit
-end
+# unless stderr1 == ''
+#   puts stderr1
+#   sendMail(stderr1)
+#   exit
+# end
 
-puts "Scraper sent nothing to stderr. so now piping stdout to quandl upload"
-
-puts stdout1
+# puts "Scraper sent nothing to stderr. so now piping stdout to quandl upload"
 
 stdout2, stderr2, status = Open3.capture3("#{@QUANDL_CMD} upload", :stdin_data => stdout1)
 
-puts stdout2 + stderr2
+final_report = "Scheduled Run of:  #{ARGV[0]}\n\n"
 
-if options[:silent]
-  if stderr2 == ''
-    sendMail("No errors reported")
-  else
-    sendMail(stderr2)
-  end
-elsif options[:verbose]
-  sendMail(stdout1 + stdout2 + stderr2)
+final_report << "Scraper Errors:"
+if stderr1 == ''
+  final_report << "  none\n\n"
 else
-  sendMail(stdout2 + stderr2)
+  final_report << "\n\n#{stderr1}\n\n"
 end
+
+if options[:verbose]
+  final_report << "Scraper Output:"
+  final_report << "\n\n#{stdout1}\n\n"
+end
+
+final_report << "Upload Errors:"
+if stderr2 == ''
+  final_report << "  none\n\n"
+else
+  final_report << "\n\n#{stderr2}\n\n"
+end
+
+unless options[:silent]
+  final_report << "Upload results:"
+  if stdout2 == ''
+    final_report << "  Nothing Uploaded"
+  else
+    final_report << "\n\n#{stdout2}\n\n"
+  end
+end
+
+
+puts final_report
+sendMail(final_report)
 
