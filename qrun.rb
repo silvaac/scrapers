@@ -8,8 +8,10 @@ if @QUANDL_CMD == ''
   @QUANDL_CMD = '/usr/local/bin/quandl'
 end
 
+@EMAIL = 'tammer@tammer.com'
+
 def sendMail (body)
-  Open3.capture3("mail -s #{ARGV[0]} tammer@tammer.com", :stdin_data => body)
+  Open3.capture3("mail -s #{ARGV[0]} #{@EMAIL}", :stdin_data => body)
 end
 
 # Parse command line
@@ -21,6 +23,9 @@ OptionParser.new do |opts|
   end
   opts.on("-s", "--silent", "Report ONLY errors and nothing else; supercedes -v option") do |s|
     options[:silent] = s
+  end
+  opts.on("-m", "--email [EMAIL]", "Report ONLY errors and nothing else; supercedes -v option") do |e|
+    @EMAIL = e
   end
 end.parse!
 
