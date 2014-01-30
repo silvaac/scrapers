@@ -10,7 +10,7 @@ puts <<META
 code: SHIBOR
 name: Shibor
 description: Shaghai Interbank Offer Rate
-display_url: http://www.shibor.org/shibor/web/AllShibor_e.jsp
+reference_url: http://www.shibor.org/shibor/web/AllShibor_e.jsp
 --
 META
 
