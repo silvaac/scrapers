@@ -1,9 +1,8 @@
 require "nokogiri"
 require 'open-uri'
 
-
 #
-# Shibor, last 10 days
+# Print the last 10 days of Shibor in Quandl data format
 #
 
 puts <<META
@@ -18,11 +17,7 @@ doc = Nokogiri::HTML(open('http://www.shibor.org/shibor/ShiborTendaysShow_e.do')
 
 doc.css('#result tr').each do |row|
 	row = row.css('td')
-	print row.shift.content
-	row.each do |item|
-		print ", #{item.content}"
-	end
-	puts
+	puts row.map {|datum| datum.content }.join(", ")
 end
 
 
