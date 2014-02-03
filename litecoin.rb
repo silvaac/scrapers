@@ -2,7 +2,7 @@ require "nokogiri"
 require 'open-uri'
 
 #
-# Print the last 2 days of Litecoin v USD rates
+# Print the last 2 days of various crypto ccys
 #
 
 def dump_numbers(short_a, short_b)
@@ -20,9 +20,9 @@ end
 def dump_meta( short_a, short_b, long_a, long_b )
   puts <<META
 code: #{short_a}#{short_b}
-name: #{long_a} (#{short_a}) vs #{long_b} (#{short_b})
-description: Value of 1 #{long_a} in #{long_b}s.  Volume in units of #{short_a}.
-reference_url: http://www.cryptocoincharts.info/period-charts.php?period=alltime&resolution=day&pair=#{short_a}-#{short_b}&market=btc-e
+name: #{long_a} (#{short_a}) vs #{long_b} (#{short_b}), BTC-e
+description: Value of 1 #{long_a} in #{long_b}s.  Volume in units of #{short_a}.  Data from the BTC-e exchange.
+reference_url: www.cryptocoincharts.info/period-charts.php?period=alltime&resolution=day&pair=#{short_a}-#{short_b}&market=btc-e
 --
 META
 end
