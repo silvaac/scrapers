@@ -5,7 +5,7 @@ require 'optparse'
 @QUANDL_CMD = `which quandl`.strip
 
 if @QUANDL_CMD == ''
-  @QUANDL_CMD = '/usr/local/bin/quandl'
+  @QUANDL_CMD = '/usr/local/quandl/bin'
 end
 
 @EMAIL = 'tammer@tammer.com'
