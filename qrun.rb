@@ -11,7 +11,7 @@ begin
   @QUANDL_CMD = `which quandl`.strip
 
   if @QUANDL_CMD == ''
-    @QUANDL_CMD = '/usr/local/quandl/bin'
+    @QUANDL_CMD = '/usr/local/quandl/bin/quandl'
   end
 
 
