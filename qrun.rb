@@ -8,7 +8,6 @@ end
 @EMAIL = 'tammer@tammer.com'
 
 begin
-  asfd
   @QUANDL_CMD = `which quandl`.strip
 
   if @QUANDL_CMD == ''
@@ -79,7 +78,8 @@ begin
   sendMail(final_report)
 
 rescue
-  sendMail("qrun itself has failed with #{$!}")
+  puts "qrun itself has failed with #{$!}"
+  Open3.capture3("mail -s 'qrun failed on #{ARGV[0]}' #{@EMAIL}", :stdin_data => "#{$!}")
 end
 
 
