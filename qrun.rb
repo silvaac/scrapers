@@ -25,7 +25,7 @@ begin
     opts.on("-s", "--silent", "Report ONLY errors and nothing else; supercedes -v option") do |s|
       options[:silent] = s
     end
-    opts.on("-m", "--email [EMAIL]", "Report ONLY errors and nothing else; supercedes -v option") do |e|
+    opts.on("-m", "--email [EMAIL]", "set the email address") do |e|
       @EMAIL = e
     end
   end.parse!
